@@ -1,0 +1,100 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: Sans-serif;
+    height: 100%;
+    width: 100%;
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
+}
+header{
+    text-align: center;
+    padding: 20px;
+    text-transform: uppercase;
+
+}
+
+#btn{
+    transform: translateY(260px);
+    position: relative;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+button{
+    border: none;
+    padding: 10px 25px;
+    color: white;
+    margin-right: 20px;
+    border-radius: 20px;
+    font-size: 25px;
+}
+
+.btn1{
+    background-color: green;
+}
+
+.btn2{
+    background-color: blue;
+}
+
+footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+#footer i{
+    display: block;
+}
+
+footer div:hover{
+    color: green;
+}
+
+footer div:nth-child(1){
+    color: green;
+}
+
+/*styles for sending.html*/
+#sending-page .ip{
+    background-color: black;
+    color: white;
+}
+
+#sending-page .waiting{
+    text-align: center;
+    background-color: orange;
+    margin-top: 40px;
+}
+
+#sending-page{
+    text-align: center;
+    transform: translateY(100px);
+}
+
+/*styles for receiver.html*/
+.receive{
+    font-size: 30px;
+    text-align: center;
+    transform: translateY(100px);
+}
+
+.receive .Enter-ip{
+    text-align: center;
+    background-color: orange;
+    font-size: 30px;
+    margin-top: 20px;
+}
