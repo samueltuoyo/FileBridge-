@@ -80,7 +80,7 @@ footer div:nth-child(1){
     margin-top: 40px;
 }
 
-#sending-page{
+#sending-page, .mp3-converter{
     text-align: center;
     transform: translateY(100px);
 }
@@ -94,7 +94,49 @@ footer div:nth-child(1){
 
 .receive .Enter-ip{
     text-align: center;
-    background-color: orange;
-    font-size: 30px;
+    background-color: lightgray;
+    padding: 20px;
+    border: none;
+    width: 100%;
     margin-top: 20px;
+    border-radius: 30px;
+}
+
+.receive button{
+    background-color: orange;
+    color: white;
+    margin-top: 20px;
+}
+
+/*styles for video-to-mp3.html*/
+.mp3-converter{
+    padding: 20px;
+    border-radius: 30px;
+    background-color: whitesmoke;
+    display: flex;
+    justify-content: space-between;
+}
+
+.mp3-converter .right{
+   border: 2px solid green;
+   padding: 10px 30px;
+   border-radius: 20px;
+   height: 40px;
+}
+
+.mp3-converter .right i{
+    margin-right: 10px;
+}
+
+
+.mp3-converter label{
+    margin-top: 12px;
+}
+
+#converter{
+    background-color: #333;
+}
+
+#converter header{
+    color: white;
 }
