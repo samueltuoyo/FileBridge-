@@ -97,7 +97,7 @@ footer div:nth-child(1){
     background-color: lightgray;
     padding: 20px;
     border: none;
-    width: 100%;
+    min-width: 350px;
     margin-top: 20px;
     border-radius: 30px;
 }
@@ -113,8 +113,10 @@ footer div:nth-child(1){
     padding: 20px;
     border-radius: 30px;
     background-color: whitesmoke;
-    display: flex;
+    text-align: center;
+    display: flex; 
     justify-content: space-between;
+    
 }
 
 .mp3-converter .right{
@@ -135,8 +137,17 @@ footer div:nth-child(1){
 
 #converter{
     background-color: #333;
+    text-align: center;
 }
 
 #converter header{
     color: white;
 }
+
+/* styles for instructions.html */
+#video{
+    height: 400px;
+    width:100%;
+}
+ 
+ 
