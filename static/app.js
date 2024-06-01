@@ -8,10 +8,11 @@ if (input.value === ''){
    text.style.color = 'red';
    text.style.fontSize = '20px';
 }
-else{
-    text.textContent = '';
 }
-}
+// else{
+//     text.textContent = '';
+// }
+
 entrance.addEventListener('animationend', () => {
-    window.location.href = 'main.html';
+    window.location.href = '/main';
 });
