@@ -1,31 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FileBridge</title>
-    <link rel="stylesheet" href="static/styles.css">
-    <script src="https://kit.fontawesome.com/edec7f25e3.js" crossorigin="anonymous"></script>
-</head>
-<body>
+    <link rel="stylesheet" href="static/styles.css" />
+    <script
+      src="https://kit.fontawesome.com/edec7f25e3.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- This is The socket.io javascript library -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.4/socket.io.js"
+      integrity="sha512-YeeA/Qxn5hYdkukScTCNNOhTrv1C2RubAGButJ1rmgQwZf/HdRaCGl+JAVkqsqaNRaYNHdheiuKKuPf9mDcqKg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <!-- This is the jquery CDN -->
+    <!-- https://releases.jquery.com/ -->
+    <script
+      src="https://code.jquery.com/jquery-3.6.1.slim.min.js"
+      integrity="sha256-w8CvhFs7iHNVUtnSP0YKEg00p9Ih13rlL9zGqvLdePA="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <script>
+    // This is the javascript script for the socket.Io for the chat and will be later added to the app.js javascript file
+
+    // Define socket
+    $(document).ready(() => {
+      let socket = io.connect("/sender");
+
+      socket.on("connect", () => {
+        socket.emit("sender", {});
+      });
+
+      socket.on("status", (data) => {
+        $("#ChatArea").val($("#ChatArea").val() + " " + data.msg + "\n");
+        $("#ChatArea").scrollTop($("#ChatArea")[0].scrollHeight);
+      });
+
+      socket.on("message", (data) => {
+        if (data.file) {
+          const downloadLink = document.createElement('a');
+          downloadLink.href = data.file;
+          downloadLink.download = data.fileName;
+          downloadLink.textContent = `Download ${data.fileName}`;
+          downloadLink.style.display = 'block';
+          document.getElementById('messages').appendChild(downloadLink);
+
+          $("#ChatArea").val($("#ChatArea").val() + " " + data.username + ": File received - " + data.fileName + "\n");
+        } else {
+          $("#ChatArea").val($("#ChatArea").val() + " " + data.msg + "\n");
+        }
+        $("#ChatArea").scrollTop($("#ChatArea")[0].scrollHeight);
+      });
+
+      $("#send-btn").click((e) => {
+        const text = $("#sendinput").val();
+        $("#sendinput").val("");
+        socket.emit("text", { msg: text });
+      });
+
+      $("#fileinput").change((e) => {
+        const file = e.target.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = (event) => {
+            socket.emit("file", {
+              file: event.target.result,
+              fileName: file.name,
+              fileType: file.type
+            });
+          };
+          reader.readAsDataURL(file);
+        }
+      });
+
+      const leaveRoom = () => {
+        socket.emit("left", {}, () => {
+          socket.disconnect();
+          window.location.href = "/receiver";
+        });
+      };
+
+      $(".leave-btn").click(leaveRoom);
+    });
+  </script>
+
+  <body>
     <header>
-       <h1>File-Bridge <i class="fas fa-briefcase"></i></h1>
+      <h1>File-Bridge <i class="fas fa-briefcase"></i></h1>
     </header>
-  <div id="sending-page">
-      <button class="ip">
-          Your ip address is<br /> (...)
-      </button>
-      
-      <button class="waiting">
-          Waiting For Connection <br><progress></progress>
-      </button>
-  </div>
-  <footer id="footer">
-    <div><a href="/main"><i class="fas fa-share-alt"></i> <span>Share Files</span></a></div>
-    <div><a href="mp3"><i class="fas fa-music"></i> <span> Mp4 To Mp3</span></a></div>
-    <div><a href="{{url_for('instructions')}}"><i class="fas fa-book-open"></i> <span>Instructions</span></a></div>
-    <div><i class="fas fa-user"></i> <span>Me</span></div>
-   </footer>
-      <script src="static/app.js"></script>    
-</body>
+    <div id="sending-page">
+      <h2 class="text-center">Room ({{session['Room_Name']}})</h2>
+      <!-- Add file input in the chat area -->
+      <textarea
+        placeholder="Leave a chat or drop a file"
+        id="ChatArea"
+      ></textarea>
+
+      <label class="label" for="ChatArea">Chats...</label>
+
+      <div class="send-input">
+        <input
+          type="text"
+          id="sendinput"
+          class="text-input"
+          placeholder="What's on your mind?"
+        />
+      </div>
+
+      <!-- File input for uploading files -->
+      <input type="file" id="fileinput" class="file-input" />
+
+      <button class="send-button" type="submit" id="send-btn">Send</button>
+      <button
+        type="submit"
+        class="leave-btn"
+        id="leave-btn"
+        onclick="leaveRoom()"
+        >
+        Leave chat room
+        </button>
+      <div id="messages"></div>
+        </div>
+    <footer id="footer">
+      <div>
+        <a href="/main"
+          ><i class="fas fa-share-alt"></i> <span>Share Files</span></a
+        >
+      </div>
+      <div>
+        <a href="mp3"><i class="fas fa-music"></i> <span> Mp4 To Mp3</span></a>
+      </div>
+      <div>
+        <a href="{{url_for('instructions')}}"
+          ><i class="fas fa-book-open"></i> <span>Instructions</span></a
+        >
+      </div>
+      <div><i class="fas fa-user"></i> <span>Me</span></div>
+    </footer>
+    <script src="static/app.js"></script>
+  </body>
 </html>
