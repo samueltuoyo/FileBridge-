@@ -1,1 +1,4 @@
 Flask==3.0.3
+Socket
+Flask_SocketIO
+Flask_Session
