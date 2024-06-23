@@ -1,1 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>FileBridge</title>
+    <link rel="stylesheet" href="static/styles.css">
+    <script src="https://kit.fontawesome.com/edec7f25e3.js" crossorigin="anonymous"></script>
+     <script>
+    // This is the javascript script for the socket.Io for the chat and will be later added to the app.js javascript file
 
+    // Define socketIO
+$(document).ready(() => {
+  let socket = io.connect("/sender");
+  socket.on("connect", () => {
+    socket.emit("sender", {});
+  });
+  socket.on("status", (data) => {
+    $("#ChatArea").val($("#ChatArea").val() + " " + data.msg + "\n");
+    $("#ChatArea").scrollTop($("#ChatArea")[0].scrollHeight);
+  });
+  $("#send-btn").click((e) => {
+    const text = $("#sendinput").val();
+    $("#sendinput").val("");
+    socket.emit("text", { msg: text });
+  });
+  socket.on("message", (data) => {
+    if (data.file) {
+      const downloadLink = document.createElement('a');
+      downloadLink.href = data.file;
+      downloadLink.download = data.fileName;
+      downloadLink.textContent = `Download ${data.fileName}`;
+      downloadLink.style.display = 'block';
+      document.getElementById('messages').appendChild(downloadLink);
+      $("#ChatArea").val($("#ChatArea").val() + " " + data.username + ": File received - " + data.fileName + "\n");
+    } else {
+      $("#ChatArea").val($("#ChatArea").val() + " " + data.msg + "\n");
+    }
+    $("#ChatArea").scrollTop($("#ChatArea")[0].scrollHeight);
+  });
+  $("#fileinput").change((e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        socket.emit("file", { file: event.target.result, fileName: file.name, fileType: file.type });
+      };
+      reader.readAsDataURL(file);
+    }
+  });
+  const leaveRoom = () => {
+    socket.emit("left", {}, () => { 
+        socket.disconnect();
+        window.location.href = "/receiver"
+      
+    });
+  };
+  $(".leave-btn").click(leaveRoom);
+});
+  </script>
+   <link rel="shortcut icon" href="../../static/Filebridge.png" type="image/x-icon">
+   
+</head>
+    <header>
+       <h1>File-Bridge <i class="fas fa-briefcase"></i></h1>
+    </header>
+   
+ <div id="messages"></div>
+ 
+
+<footer id="footer">
+  <div><a id="main-link" href="/main"><i class="fas fa-share-alt"></i> <span>Share Files</span></a></div>
+  <div><a id="mp3-link" href="/Downloads"><i class="fas fa-download"></i> <span>Downloads</span></a></div>
+  <div><a id="instructions-link" href="{{ url_for('instructions') }}"><i class="fas fa-book-open"></i> <span>Instructions</span></a></div>
+  <div><a id="me-link" href="#"><i class="fas fa-user"></i> <span>Me</span></a></div>
+</footer> 
+<script src="static/app.js"></script>    
+</body>
+</html>
