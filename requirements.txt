@@ -2,7 +2,7 @@ bidict==0.23.1
 blinker==1.8.2
 cachelib==0.13.0
 click==8.1.7
-Flask==3.0.3
+Flask==3.0.2
 Flask-Session==0.8.0
 Flask-SocketIO==5.3.6
 h11==0.14.0
