@@ -114,6 +114,7 @@ def handle_file(data):
 
 
 # This is for the running 
-if __name__ == '__main__'
-    app.run(debug=True)
+if __name__ == '__main__':
+    app.secret_key = "SECRET"
+    app.run(debug=True, host=host, port=2024)
   #  SocketIO.run()
