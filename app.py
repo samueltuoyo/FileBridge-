@@ -6,16 +6,6 @@ import base64
 import socket
 from io import BytesIO
 
-app = Flask(__name__)
-#  This is the config 
-app.config["SECRET_KEY"] = 'This is my Secret Key '
-app.config["SESSION_TYPE"] = 'filesystem'
-
-# This Host is to get the host IP address of the current machine 
-host = socket.gethostbyname(socket.gethostname())
-#host = '192.168.77.115'
-
-Session(app)
 
 DOWNLOAD = os.path.join(app.root_path, 'uploaded_files')
 os.makedirs(DOWNLOAD, exist_ok=True)
