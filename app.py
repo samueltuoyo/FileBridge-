@@ -113,8 +113,14 @@ def handle_file(data):
 
 
 
-# This is for the running 
+from flask import Flask, render_template
+
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+
 if __name__ == '__main__':
-    app.secret_key = "SECRET"
-    app.run(debug=True, host=host, port=2024)
-  #  SocketIO.run()
+    app.run(debug=True)
