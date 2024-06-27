@@ -10,7 +10,8 @@ app = Flask(__name__)
 app.config["SECRET_KEY"] = 'This is my Secret Key '
 app.config["SESSION_TYPE"] = 'filesystem'
 
-host = socket.gethostbyname(socket.gethostname())
+# host = socket.gethostbyname(socket.gethostname())
+host = "192.168.238.1"
 Session(app)
 
 DOWNLOAD = os.path.join(app.root_path, 'uploaded_files')
@@ -96,4 +97,4 @@ def handle_file(data):
     }, room=Room_Name)
 
 if __name__ == '__main__':
-    socketio.run(app, debug=True)
+    socketio.run(app, debug=True, host=host)
