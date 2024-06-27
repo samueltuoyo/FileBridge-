@@ -101,5 +101,5 @@ def to_downloads():
 #         'username': session.get('username')
 #     }, room=Room_Name)
 
-# if __name__ == '__main__':
-#     socketio.run(app, debug=True, host=host)
+if __name__ == '__main__':
+    socketio.run(app, debug=True, host=host)
