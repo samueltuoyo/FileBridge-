@@ -1,10 +1,10 @@
 from flask import Flask, render_template, request, url_for, redirect, session, send_file
 from flask_session import Session
-from flask_socketio import SocketIO, join_room, leave_room, emit
-import os
-import base64
-import socket
-from io import BytesIO
+# from flask_socketio import SocketIO, join_room, leave_room, emit
+# import os
+# import base64
+# import socket
+# from io import BytesIO
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = 'This is my Secret Key '
@@ -102,4 +102,4 @@ def to_downloads():
 #     }, room=Room_Name)
 
 if __name__ == '__main__':
-    socketio.run(app, debug=True, host=host)
+    app.run()
