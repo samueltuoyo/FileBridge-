@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, url_for, redirect, session, send_file
-from flask_session import Session
+#from flask_session import Session
 # from flask_socketio import SocketIO, join_room, leave_room, emit
 # import os
 # import base64
@@ -7,17 +7,17 @@ from flask_session import Session
 # from io import BytesIO
 
 app = Flask(__name__)
-app.config["SECRET_KEY"] = 'This is my Secret Key '
-app.config["SESSION_TYPE"] = 'filesystem'
+#app.config["SECRET_KEY"] = 'This is my Secret Key '
+#app.config["SESSION_TYPE"] = 'filesystem'
 
 # host = socket.gethostbyname(socket.gethostname())
-host = "192.168.238.1"
-Session(app)
+#host = "192.168.238.1"
+#Session(app)
 
-DOWNLOAD = os.path.join(app.root_path, 'uploaded_files')
-os.makedirs(DOWNLOAD, exist_ok=True)
+#DOWNLOAD = os.path.join(app.root_path, 'uploaded_files')
+#os.makedirs(DOWNLOAD, exist_ok=True)
 
-socketio = SocketIO(app, manage_session=False)
+#socketio = SocketIO(app, manage_session=False)
 
 @app.route("/", methods=['GET', 'POST'])
 def index():
