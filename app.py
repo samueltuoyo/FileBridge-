@@ -56,6 +56,11 @@ def download_temp_file(file_name):
 def instructions():
     return render_template('instructions/instructions.html')
 
+
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
 @app.route('/Downloads')
 def to_downloads():
     return render_template('Downloads/Downloads.html')

@@ -10,4 +10,5 @@ env/
 venv/
 ENV/
 env.bak/
+flask_session/
 venv.bak/
