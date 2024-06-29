@@ -1,5 +1,11 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+}
+
 .about_body {
     background-color: wheat;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 .row{
@@ -44,7 +50,7 @@ h1{
 .card img{
     width: 100%;
     border-radius: 50%;
-    height: 8em;
+    height: 9em;
 }
 
 .card h3{
@@ -150,10 +156,6 @@ h5{
     margin-bottom: 45px;
 }
 
-span{
-    color: red;
-}
-
 .main{
     width: 1130px;
     max-width: 95%;
@@ -162,3 +164,35 @@ span{
     align-items: center;
     justify-content: space-around;
 }
+
+
+
+footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+#footer i{
+    display: block;
+}
+
+footer div:hover{
+    color: green;
+}
+
+footer div:nth-child(1){
+    color: green;
+}
+
+#footer a{
+    color: inherit;
+    text-decoration: none;
+}
+

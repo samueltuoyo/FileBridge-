@@ -10,12 +10,12 @@ app = Flask(__name__)
 app.config["SECRET_KEY"] = 'This is my Secret Key '
 app.config["SESSION_TYPE"] = 'filesystem'
 
-# host = socket.gethostbyname(socket.gethostname())
-host = "192.168.238.1"
+host = socket.gethostbyname(socket.gethostname())
+# host = "192.168.238.1"
 Session(app)
 
-DOWNLOAD = os.path.join(app.root_path, 'uploaded_files')
-os.makedirs(DOWNLOAD, exist_ok=True)
+# DOWNLOAD = os.path.join(app.root_path, 'uploaded_files')
+# os.makedirs(DOWNLOAD, exist_ok=True)
 
 socketio = SocketIO(app, manage_session=False)
 
