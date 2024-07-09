@@ -7,8 +7,6 @@ html, body{
     font-family: Sans-serif;
     height: 100%;
     width: 100%;
-    background-color: 
-    wheat;
 }
 
 a{
@@ -97,12 +95,14 @@ button{
     animation: move 2s 2;
 }
 
-/* Fix the bug in the keyframe */
 @keyframes move{
     0%{transform: scale(0)}
-    50%{transform: scale(1)}
+    50%{transform: scale(1)})
     100%{transform: scale(2)}
+    
+   
 } 
+
 .btn2{
     background-color: blue;
 }
@@ -159,12 +159,11 @@ footer div:nth-child(1){
 #sending-page .waiting{
     text-align: center;
     background-color: orange;
-    margin-top: 20px;
 }
 
 #sending-page, .mp3-converter{
     text-align: center;
-    transform: translateY(100px);
+    transform: translateY(50px);
 }
 
 /*styles for receiver.html*/
@@ -172,8 +171,7 @@ footer div:nth-child(1){
     font-size: 30px;
     text-align: center;
     transform: translateY(100px);
-    
-}
+  }
 
 .receive .Enter-ip{
     text-align: center;
@@ -371,5 +369,4 @@ footer div:nth-child(1){
        width: 250px;
    }
 }
-
 
