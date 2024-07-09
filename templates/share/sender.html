@@ -97,14 +97,14 @@ $(document).ready(() => {
        
    <button class="button open-button open-button-Mobile" id="leave-btn">Leave Room</button>
    
-    <div id="sending-page" style="position: relative; top: 40px;">
+    <div id="sending-page">
       <h2 class="text-center">Room ({{session['Room_Name']}})</h2>
       <!-- Add file input in the chat area -->
       <textarea
         placeholder="Leave a chat or drop a file"
         id="ChatArea" disabled
       ></textarea>
-
+<div id="messages"><i class="fas fa-download"></i></div>
   
       <div class="send-input">
         <input
@@ -126,8 +126,14 @@ $(document).ready(() => {
       
         
        </div>
-      </main>
-    <script src="static/app.js"></script>
+
+<footer id="footer">
+  <div><a id="main-link" href="/main"><i class="fas fa-share-alt"></i> <span>Share Files</span></a></div>
+  <div><a id="mp3-link" href="/Downloads"><i class="fas fa-download"></i> <span>Downloads</span></a></div>
+  <div><a id="instructions-link" href="{{ url_for('instructions') }}"><i class="fas fa-book-open"></i> <span>Instructions</span></a></div>
+  <div><a id="me-link" href="#"><i class="fas fa-user"></i> <span>Me</span></a></div>
+</footer>   </main>
+   
 <script>
   const openModals = document.querySelectorAll(".open-button");
 const closeModals = document.querySelectorAll(".close-button");
@@ -143,6 +149,6 @@ closeModals.forEach((btn) => {
     modal.close();
   });
 });
-</script>
+</script>  
   </body>
 </html>
