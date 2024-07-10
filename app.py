@@ -1,33 +1,22 @@
 from flask import Flask, render_template, request, url_for, redirect, session, send_file
 from flask_session import Session
 from flask_socketio import SocketIO, join_room, leave_room, emit
-from flask_sqlalchemy import SQLAlchemy
-from flask_migrate import Migrate
 import os
 import base64
+import socket
 from io import BytesIO
 
 app = Flask(__name__)
+app.config["SECRET_KEY"] = 'This is my Secret Key '
+app.config["SESSION_TYPE"] = 'filesystem'
 
-# Database configuration
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://default:gN9Zeldkmb6P@ep-patient-bar-a49hhlnc-pooler.us-east-1.aws.neon.tech:5432/verceldb?sslmode=require'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
-# Initialize SQLAlchemy
-db = SQLAlchemy(app)
-
-# Session configuration
-app.config["SESSION_TYPE"] = 'sqlalchemy'
-app.config["SESSION_SQLALCHEMY"] = db  # Use the existing db instance
-app.config["SESSION_PERMANENT"] = False
-
-# Initialize Flask-Session
+host = socket.gethostbyname(socket.gethostname())
+# host = "wifi ip_address here"
 Session(app)
 
-# Initialize Flask-Migrate
-migrate = Migrate(app, db)
+# DOWNLOAD = os.path.join(app.root_path, 'uploaded_files')
+# os.makedirs(DOWNLOAD, exist_ok=True)
 
-# Initialize Flask-SocketIO
 socketio = SocketIO(app, manage_session=False)
 
 @app.route("/", methods=['GET', 'POST'])
@@ -50,7 +39,6 @@ def sender():
         return render_template('share/receiver.html', Session=session)
     else:
         return redirect(url_for('receiver'))
-
 @app.route('/about')
 def about():
     return render_template('about.html')
@@ -77,20 +65,20 @@ def to_downloads():
 
 @socketio.on('sender', namespace='/sender')
 def sender_event(message):
-    Room_Name = session.get('Room_Name')
-    username = session.get('username')
-    join_room(Room_Name)
-    emit('status', {
-        "msg": f"{username} has joined the room!!!"
-    }, room=Room_Name)
+   Room_Name = session.get('Room_Name')
+   username = session.get('username')
+   join_room(Room_Name)
+   emit('status', {
+       "msg": f"{username} has joined the room!!!"
+   }, room=Room_Name)
 
 @socketio.on('text', namespace='/sender')
 def text_event(message):
     Room_Name = session.get('Room_Name')
     username = session.get('username')
     emit('message', {
-        "msg": f"{username}: {message['msg']}"
-    }, room=Room_Name)
+       "msg": f"{username}: {message['msg']}"
+   }, room=Room_Name)
 
 @socketio.on('left', namespace='/sender')
 def left_event(message):
@@ -99,17 +87,17 @@ def left_event(message):
     leave_room(Room_Name)
     session.clear()
     emit('status', {
-        "msg": f"{username} has left the room :("
-    }, room=Room_Name)
+       "msg": f"{username} has left the room :("
+   }, room=Room_Name)
 
 @socketio.on('file', namespace='/sender')
 def handle_file(data):
-    Room_Name = session.get('Room_Name')
-    emit('message', {
-        'file': data['file'],
-        'fileName': data['fileName'],
-        'username': session.get('username')
+   Room_Name = session.get('Room_Name')
+   emit('message', {
+       'file': data['file'],
+       'fileName': data['fileName'],
+       'username': session.get('username')
     }, room=Room_Name)
 
 if __name__ == '__main__':
-    socketio.run(app, debug=True, port=2024)
+    socketio.run(app, debug="True", port="2024")
