@@ -15,21 +15,21 @@ app = Flask(__name__)
 #app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Initialize SQLAlchemy
-db = SQLAlchemy(app)
+#db = SQLAlchemy(app)
 
 # Session configuration
-app.config["SESSION_TYPE"] = 'sqlalchemy'
-app.config["SESSION_SQLALCHEMY"] = db  # Use the existing db instance
-app.config["SESSION_PERMANENT"] = False
+#app.config["SESSION_TYPE"] = 'sqlalchemy'
+#app.config["SESSION_SQLALCHEMY"] = db  # Use the existing db instance
+#app.config["SESSION_PERMANENT"] = False
 
 # Initialize Flask-Session
-Session(app)
+#Session(app)
 
 # Initialize Flask-Migrate
-migrate = Migrate(app, db)
+#migrate = Migrate(app, db)
 
 # Initialize Flask-SocketIO
-socketio = SocketIO(app, manage_session=False)
+#socketio = SocketIO(app, manage_session=False)
 
 # Define Models
 #class Message(db.Model):
@@ -120,12 +120,12 @@ def to_downloads():
 #    Room_Name = session.get('Room_Name')
  #   username = session.get('username')
  #   leave_room(Room_Name)
-  $ session.clear()
+  # session.clear()
  #   emit('status', {
 #        "msg": f"{username} has left the room :("
 #    }, room=Room_Name)
 
-$@socketio.on('file', namespace='/sender')
+#@socketio.on('file', namespace='/sender')
 #def handle_file(data):
 #    Room_Name = session.get('Room_Name')
  #   username = session.get('username')
