@@ -32,8 +32,14 @@
       const downloadLink = document.createElement('a');
       downloadLink.href = data.file;
       downloadLink.download = data.fileName;
-      downloadLink.textContent = `Download ${data.fileName}`;
+      downloadLink.innerHTML = `Download: ${data.fileName} <i class="fas fa-download"></i>`;
       downloadLink.style.display = 'block';
+      downloadLink.style.backgroundColor = '#00ff00';
+      downloadLink.style.padding = '10px 20px';
+      downloadLink.style.width = '300px';
+      downloadLink.style.borderRadius = '10px';
+      downloadLink.style.margin = 'auto'
+      downloadLink.style.marginBottom = '10px';
       document.getElementById('messages').appendChild(downloadLink);
       $("#ChatArea").val($("#ChatArea").val() + " " + data.username + ": File received - " + data.fileName + "\n");
     } else {
@@ -85,7 +91,7 @@
         placeholder="Leave a chat or drop a file"
         id="ChatArea" disabled
       ></textarea>
-<div id="messages"><i class="fas fa-download"></i></div>
+<div id="messages"></div>
   
       <div class="send-input">
         <input
