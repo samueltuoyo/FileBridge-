@@ -76,15 +76,14 @@
     <header>
       <h1>File-Bridge <i class="fas fa-briefcase"></i></h1>
     </header>
+    <div id="container-sending-page">
     <dialog class="modal" id="modal" style="text-align: center;">
     <h2>Are you sure you want to leave?</h2>
   <button class="button close-button-modal close-button">No</button>
   <button type="submit" class="leave-btn" id="leave-btn" onclick="leaveRoom()">Yes</button>
   </dialog>
-       
+   <div id="sending-page">     
    <button class="button open-button open-button-Mobile" id="leave-btn">Leave Room</button>
-   
-    <div id="sending-page">
       <h2 class="text-center">Room ({{session['Room_Name']}})</h2>
       <!-- Add file input in the chat area -->
       <textarea
@@ -103,7 +102,7 @@
     </div>
 
       <!-- File input for uploading files -->
-        <input type="file" multiple id="fileinput" class="file-input" style="display: none;" />
+        <input type="file" multiple id="fileinput" accept="*/*" class="file-input" style="display: none;" />
       <label for="fileinput" id="file-upload"><i class="fa-solid fa-file"></i></label>
   
      <button class="send-button" id="send-btn">Send <i class="fas fa-paper-plane"></i></button>
@@ -113,13 +112,7 @@
       
         
        </div>
-
-<footer id="footer">
-  <div><a id="main-link" href="/main"><i class="fas fa-share-alt"></i> <span>Share Files</span></a></div>
-  <div><a id="mp3-link" href="/Downloads"><i class="fas fa-download"></i> <span>Downloads</span></a></div>
-  <div><a id="instructions-link" href="/instructions"><i class="fas fa-book-open"></i> <span>Instructions</span></a></div>
-  <div><a id="me-link" href="/about"><i class="fa-solid fa-user-group"></i> <span>About</span></a></div>
-</footer> 
+       </div>
    <script>
      const openModals = document.querySelectorAll(".open-button");
 const closeModals = document.querySelectorAll(".close-button");
