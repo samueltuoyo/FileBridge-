@@ -23,7 +23,10 @@ header{
     text-transform: uppercase;
     background-color: #333;
     color: white;
-
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
 }
 
 .send-button{
@@ -123,10 +126,6 @@ footer{
     display: block;
 }
 
-footer div:hover{
-    color: green;
-}
-
 footer div:nth-child(1){
     color: green;
 }
@@ -170,7 +169,8 @@ footer div:nth-child(1){
 .receive{
     font-size: 30px;
     text-align: center;
-    transform: translateY(100px);
+    margin-top: 70px;
+    transform: translateY(200px);
   }
 
 .receive .Enter-ip{
@@ -227,6 +227,129 @@ footer div:nth-child(1){
     color: white;
 }
 
+/*styles for about.html */
+
+.team_img img{
+    max-width: 500px;   
+    display:inline-block;
+}
+
+.about-section{
+    margin-top: 70px;
+}
+.about{
+    width: 100%;
+    padding: 20px;
+    background-color: black;
+}
+
+.about img{
+    height: auto;
+    width: 320px;
+}
+
+.about-2{
+    width: 300px;
+}
+
+.about-2{
+    width: 300px;
+
+.about h2{
+    color: white;
+    font-size: 45px;
+    margin-bottom: 20px;
+}
+.about h5{
+    color: white;
+    letter-spacing: 2px;
+    font-size: 22px;
+    margin-bottom: 25px;
+}
+
+}
+
+.about-2 p{
+    color: white;
+    letter-spacing: 1px;
+    line-height: 2em;
+    font-size: 19px;
+    margin-bottom: 45px;
+}
+
+.about-wrapper{
+    margin: auto;
+}
+.row{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 2em 1em;
+}
+
+.colum{
+    width: 100%;
+    padding: 0.5em 0;
+    margin: auto;
+}
+
+.card{
+    box-shadow: 0 0 0.5em rgba(25, 0, 58, 0.15);
+    padding: 3.5em 1em;
+    background: linear-gradient(#6045ea, #8567f7);
+    color: white;
+    border-radius: 0.6em;
+    color: purple;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.card .img-container{
+    width: 9em;
+    height: 9em; 
+    background-color: #a993ff;
+    padding: 0.5em;
+    border-radius: 50%;
+    margin: 0 auto 2em auto;
+}
+
+.card img{
+    width: 100%;
+    border-radius: 50%;
+    height: 8em;
+}
+
+.card h3{
+    font-weight: 500px;
+    text-align: center;
+    color: #fff;
+}
+.card p{
+    font-weight: 300;
+    text-transform: uppercase;
+    margin: 0.5em 0 2em 0;
+    color: #fff;
+    text-align: center;
+    letter-spacing: 2px;
+}
+
+.card-icons{
+    width: 50%;
+    min-width: 180px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    }
+
+.card a {
+    text-decoration: none;
+    color: #000;
+    font-size: 1.4em;
+    text-align: center;
+}
+
+.card:hover .img-container{
+    transform: scale(1.15);
+}
 /* styles for instructions.html */
 #video{
     height: 400px;
@@ -350,11 +473,33 @@ footer div:nth-child(1){
     left: 220px;
     border-radius: 0;
   
-     }
+}
+     
+     .about-section {
+        padding: 1em;
+
+    }   
+    .card{
+        padding: 5em 1em;
+    }
+    .colum{
+        flex: 0 0 33.33%;
+        max-width: 33.33%;
+        padding: 0 1em;
+    }
+    
+    .about .main{
+    width: 1130px;
+    max-width: 95%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
 
 }
 
-@media(max-width: 350px){
+/*@media(max-width: 350px){
     .receive .Enter-ip{
         width: 250px;
         padding: 20px;
@@ -370,3 +515,4 @@ footer div:nth-child(1){
    }
 }
 
+*/
