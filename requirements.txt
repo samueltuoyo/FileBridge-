@@ -15,15 +15,3 @@ python-socketio==5.11.2
 simple-websocket==1.0.0
 Werkzeug==3.0.3
 wsproto==1.2.0
-Flask-SQLAlchemy
-Flask-Migrate
-psycopg2-binary
-gunicorn
-flake8
-pytest
-Flask-SQLAlchemy==3.1.1
-Flask-Migrate==4.0.5
-psycopg2-binary==2.9.3
-gunicorn==20.1.0
-flake8==5.0.4
-pytest==7.2.0
