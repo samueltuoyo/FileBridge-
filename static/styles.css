@@ -143,7 +143,7 @@ footer div:nth-child(1){
 
 #leave-btn{
     background-color: red;
-    color: white;  
+    color: white;
 }
 
 .open-button{
@@ -162,7 +162,7 @@ footer div:nth-child(1){
 
 #sending-page, .mp3-converter{
     text-align: center;
-    transform: translateY(50px);
+    transform: translateY(70px);
 }
 
 /*styles for receiver.html*/
@@ -371,6 +371,7 @@ footer div:nth-child(1){
     position: fixed;
 }
 
+
 @keyframes reveal{
     0%{opacity: 1; background: lightslategray;}
     100%{display: none;}
@@ -393,15 +394,14 @@ footer div:nth-child(1){
        width: 300px;
    }
    
-   .open-button{
-    margin-top: 20px;
-    transform: translateX(60%);
-}
 
 .open-button-Desktop{
     display: none;
 }
 
+#sending-page .open-button-Mobile{
+    margin: 20px 0 20px 70px;
+}
 .send-button{
     border: none;
     background-color: blue;
@@ -453,6 +453,9 @@ footer div:nth-child(1){
     margin: 20px 110px 0 0;
 }
 
+#container-sending-page{
+    margin-top: 100px;
+}
 .open-button-Mobile{
     display: none;
 }
