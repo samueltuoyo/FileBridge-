@@ -449,6 +449,20 @@ footer div:nth-child(1){
     padding: 20px;
     margin-top: 10px;
 }
+
+#footer{
+    height: 100%;
+    float: left;
+    overflow: none;
+    clear: both;
+    width: 14%;
+    display: block;
+    
+}
+
+#footer div{
+    margin-top: 60px;
+}
 #send-btn{
     margin: 20px 110px 0 0;
 }
